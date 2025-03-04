@@ -1,8 +1,8 @@
 function MainContent (){
     return (
         <main>
-             <p>I love to visit New York, Paris, and Tokyo.</p>
+            <p>I love to visit New York, Paris, and Tokyo.</p>
         </main>
-    )
+    );
 }
-export default MainContent
+export default MainContent;
