@@ -33,12 +33,20 @@ const RegistrationForm = () => {
       />
       {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
       <label>Email:</label>
-      <input type="text"
+      <input type="email"
         value={email}
         onChange={(e) => setEmail (e.target.value)}
       />
       {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
 
+      <label>Password:</label>
+      <input type="password"
+        value={password}
+        onChange={(e) => setPassword (e.target.value)}
+      />
+      {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
+
+      <button type="submit">Register</button>
     </form>
   )
 
