@@ -1,72 +1,46 @@
 import { useState } from "react";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: ""
-  });
-
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.username || !formData.email || !formData.password) {
-      setError("All fields are required.");
+    let validationErrors = {};
+  
+
+    if (!username) validationErrors.username = "Username is required";
+    if (!email) validationErrors.email = "Email is required";
+    if (!password) validationErrors.password = "Password is required";
+
+    if (object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
+    
     }
-    setError("");
-    console.log("Form submitted:", formData);
-    // Handle form submission logic (e.g., API call)
+    console.log({ username, email, password });
+    setErrors({});
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4 border rounded-lg shadow-md">
-      <h2 className="text-lg font-semibold mb-4">Register</h2>
-      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-      <div className="mb-2">
-        <label className="block text-sm font-medium">Username</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div className="mb-2">
-        <label className="block text-sm font-medium">Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div className="mb-2">
-        <label className="block text-sm font-medium">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded mt-2">
-        Register
-      </button>
-    </form>
-  );
-};
+    <form onsubmit = {handleSubmit}>
+      <label>Username:</label>
+      <input type="text"
+        value={username}
+        onChange={(e) => setUsername (e.target.value)}
+      />
+      {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
+      <label>Email:</label>
+      <input type="text"
+        value={email}
+        onChange={(e) => setEmail (e.target.value)}
+      />
+      {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
 
+    </form>
+  )
+
+}
 export default RegistrationForm;
