@@ -1,4 +1,4 @@
- import { QueryClient, QueryClientProvider } from 'react-query';
+ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import PostsComponent from "./components/postsComponent"
   const queryClient = new QueryClient();
 
@@ -9,3 +9,4 @@ import PostsComponent from "./components/postsComponent"
       </QueryClientProvider>
     );
   }
+  export default App
