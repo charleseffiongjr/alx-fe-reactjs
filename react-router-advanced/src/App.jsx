@@ -7,7 +7,7 @@ import UserProfile from "./component/UserProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* 🔐 Protected Static Profile Routes */}
+        
         <Route
           path="/profile"
           element={
