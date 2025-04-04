@@ -21,10 +21,12 @@ const PostsComponent = () => {
     return (
         <div>
             <h2>Posts</h2>
+            <h2></h2>
             <button onClick={() => refetch()} style={{ marginBottom: '10px' }}>Refresh Post</button>
              <ul>
                 {data.map((post) => (
                     <li key={post.id}>{post.title}</li>
+                    
                 ))}
             </ul>
         </div>
