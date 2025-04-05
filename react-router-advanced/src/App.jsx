@@ -13,6 +13,15 @@ function App() {
 const [count, setCount] = useState(0)
   return (
     <>
+      <div>
+            <h2>My Profile</h2>
+            <nav className="mb-4">
+              <Link to="ProfileDetails" className="mr-4">Details</Link>
+              <Link to="ProfileSettings">Settings</Link>
+            </nav>
+      
+            <Outlet /> {}
+          </div>
     <BrowserRouter>
       <Router>
       <Routes>
