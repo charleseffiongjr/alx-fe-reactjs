@@ -1,4 +1,4 @@
-import { useAuth } from "../components/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -13,7 +13,8 @@ const Home = () => {
       ) : (
         <button onClick={login}>Login</button>
       )}
-      <nav>
+          <nav>
+              
         <ul>
           <li><Link to="/Profile">Profile</Link></li>
           <li><Link to="/ProfileDetails">Profile Details</Link></li>
