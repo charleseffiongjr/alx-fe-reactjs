@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import ProfileDetails from './components/ProfileDetails';
@@ -8,12 +8,15 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
+    <>
+      <Link />
+      <ProfileDetails />
+      <ProfileSettings />
+      
     
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-
-        {/* 🔐 Protected Profile Route with Nested Routes */}
         <Route
           path="/profile"
           element={
@@ -25,8 +28,6 @@ function App() {
           <Route path="details" element={<ProfileDetails />} />
           <Route path="settings" element={<ProfileSettings />} />
         </Route>
-
-        {/* 🔐 Dynamic User Profile Route */}
         <Route
           path="/profile/:userId"
           element={
@@ -35,11 +36,10 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* 404 fallback */}
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+      </>
   );
 }
 
