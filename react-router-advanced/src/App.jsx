@@ -1,33 +1,18 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'react-router-dom';
-import Profile from "./components/Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./component/ProfileSettings";
-import UserProfile from "./component/UserProfile";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Home from "./components/Home";
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import ProfileDetails from './components/ProfileDetails';
+import ProfileSettings from './components/ProfileSettings';
+import UserProfile from './components/UserProfile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-
-const [count, setCount] = useState(0)
   return (
-    <>
-      <div>
-            <h2>My Profile</h2>
-            <nav className="mb-4">
-              <Link to="ProfileDetails" className="mr-4">Details</Link>
-              <Link to="ProfileSettings">Settings</Link>
-            </nav>
-      
-            <Outlet /> {}
-          </div>
     <BrowserRouter>
-      <Router>
       <Routes>
         <Route path="/" element={<Home />} />
 
-        
+        {/* 🔐 Protected Profile Route with Nested Routes */}
         <Route
           path="/profile"
           element={
@@ -40,7 +25,7 @@ const [count, setCount] = useState(0)
           <Route path="settings" element={<ProfileSettings />} />
         </Route>
 
-        {/* 🔐 Protected Dynamic Profile Route */}
+        {/* 🔐 Dynamic User Profile Route */}
         <Route
           path="/profile/:userId"
           element={
@@ -50,12 +35,11 @@ const [count, setCount] = useState(0)
           }
         />
 
-        <Route path="*" element={<div>404 Not Found</div>} />
+        {/* 404 fallback */}
+        <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
-        </Router>
-        </BrowserRouter>
-    </> 
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

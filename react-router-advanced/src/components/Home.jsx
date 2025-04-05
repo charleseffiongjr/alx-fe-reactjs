@@ -1,4 +1,4 @@
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -13,12 +13,12 @@ const Home = () => {
       ) : (
         <button onClick={login}>Login</button>
       )}
-          <nav>
-              
+
+      <nav>
         <ul>
-          <li><Link to="/Profile">Profile</Link></li>
-          <li><Link to="/ProfileDetails">Profile Details</Link></li>
-          <li><Link to="/UserProfile">Blog Post 123</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
+          <li><Link to="/profile/details">Profile Details</Link></li>
+          <li><Link to="/profile/1">Blog Post/User Profile 1</Link></li>
         </ul>
       </nav>
     </div>
