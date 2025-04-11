@@ -68,7 +68,7 @@ const AddRecipeForm = () => {
           type="text"
           name="title"
           value={formData.title}
-          onChange={handleChange}
+          onChange={(e) => setTitle(e.target.value)}
           className={`w-full border rounded p-2 ${errors.title ? 'border-red-500' : ''}`}
           required
         />
@@ -80,7 +80,7 @@ const AddRecipeForm = () => {
         <textarea
           name="ingredients"
           value={formData.ingredients}
-          onChange={handleChange}
+          onChange={(e) => setTitle(e.target.value)}
           rows="4"
           className={`w-full border rounded p-2 ${errors.ingredients ? 'border-red-500' : ''}`}
           required
