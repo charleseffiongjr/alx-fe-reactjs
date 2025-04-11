@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -24,6 +25,7 @@ const HomePage = () => {
       {recipes.length === 0 ? (
         <p className="text-center text-gray-600">Loading recipes...</p>
       ) : (
+          <link>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {recipes.map((recipe) => (
             <div
@@ -41,7 +43,8 @@ const HomePage = () => {
               </div>
             </div>
           ))}
-        </div>
+            </div>
+          </link>
       )}
     </div>
   );
