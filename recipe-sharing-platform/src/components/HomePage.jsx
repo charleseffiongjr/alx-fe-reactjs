@@ -19,13 +19,15 @@ const HomePage = () => {
   }, []);
 
   return (
+    
     <div className="p-6 bg-gray-100 min-h-screen ">
       <h1 className="text-3xl font-bold text-center mb-8">Featured Recipes</h1>
 
       {recipes.length === 0 ? (
         <p className="text-center text-gray-600">Loading recipes...</p>
       ) : (
-          <link to={`/recipe/${recipe.id}`} key={recipe.id}>
+          
+    <link to={`/recipe/${recipe.id}`} key={recipe.id}> 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {recipes.map((recipe) => (
             <div
@@ -44,9 +46,10 @@ const HomePage = () => {
             </div>
           ))}
             </div>
-          </link>
+         </link>
       )}
-    </div>
+      </div>
+       
   );
 };
 
