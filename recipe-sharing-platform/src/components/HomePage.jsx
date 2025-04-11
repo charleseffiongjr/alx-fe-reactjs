@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-const Home = () => {
+const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +18,8 @@ const Home = () => {
   }, [])
   
   return (
-    <div className='text-blue-500'>Home</div>
+    <div className='text-blue-500'>Home Page</div>
   )
 }
 
-export default Home
+export default HomePage
