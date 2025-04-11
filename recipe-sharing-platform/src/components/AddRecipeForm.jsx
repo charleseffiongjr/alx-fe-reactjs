@@ -9,21 +9,53 @@ const AddRecipeForm = () => {
     steps: '',
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: '',
+    }));
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.title.trim()) {
+      newErrors.title = 'Title is required.';
+    }
+
+    const ingredientList = formData.ingredients
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    if (!formData.ingredients.trim()) {
+      newErrors.ingredients = 'Ingredients are required.';
+    } else if (ingredientList.length < 2) {
+      newErrors.ingredients = 'Please provide at least two ingredients (comma-separated).';
+    }
+
+    if (!formData.steps.trim()) {
+      newErrors.steps = 'Preparation steps are required.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Post the data to your API or handle it as needed
+    if (!validate()) return;
+
     console.log('Recipe submitted:', formData);
 
-    // Optional: Clear form after submission
     setFormData({ title: '', ingredients: '', steps: '' });
+    setErrors({});
   };
 
   return (
@@ -36,10 +68,11 @@ const AddRecipeForm = () => {
           type="text"
           name="title"
           value={formData.title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full border rounded p-2"
+          onChange={handleChange}
+          className={`w-full border rounded p-2 ${errors.title ? 'border-red-500' : ''}`}
           required
         />
+        {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
       </div>
 
       <div>
@@ -47,11 +80,12 @@ const AddRecipeForm = () => {
         <textarea
           name="ingredients"
           value={formData.ingredients}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleChange}
           rows="4"
-          className="w-full border rounded p-2"
+          className={`w-full border rounded p-2 ${errors.ingredients ? 'border-red-500' : ''}`}
           required
-        ></textarea>
+        />
+        {errors.ingredients && <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
       </div>
 
       <div>
@@ -61,9 +95,10 @@ const AddRecipeForm = () => {
           value={formData.steps}
           onChange={handleChange}
           rows="4"
-          className="w-full border rounded p-2"
+          className={`w-full border rounded p-2 ${errors.steps ? 'border-red-500' : ''}`}
           required
-        ></textarea>
+        />
+        {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
       </div>
 
       <button
