@@ -19,7 +19,7 @@ const HomePage = () => {
   
   return (
     <div className='text-blue-500'>
-      <h1>Home Page</h1>
+      <h1 className='hover:text-blue-300'>Home Page</h1>
       {recipes.length === 0 ? (
         <p>Loading...</p>
       ) : (
@@ -36,10 +36,5 @@ const HomePage = () => {
     </div>
   );
 };
-
-    
-    
-    
-  
 
 export default HomePage
